@@ -23,6 +23,10 @@ export const PublicationForm = () => {
     if (title.trim() !== '' && body.trim() !== '') {
       setDisabled(false);
     }
+
+    if (e.target.value.trim() === '') {
+      setDisabled(true);
+    }
   };
 
   const resetForm = () => {
