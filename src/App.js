@@ -7,9 +7,10 @@ import { fetchPublications } from './redux/publications/publications';
 import { getPublications } from './redux/Slices/publicationsSlice';
 import { Publications } from './components/Publications/Publications';
 import { AppWrapper } from './App.styled';
+import { Spinner } from 'react-bootstrap';
 
 function App() {
-  const { entities: publications } = useSelector(getPublications);
+  const { entities: publications, isLoading } = useSelector(getPublications);
 
   const dispatch = useDispatch();
 
@@ -20,7 +21,11 @@ function App() {
   return (
     <AppWrapper>
       <PublicationForm />
-      {publications.length > 0 && <Publications publications={publications} />}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        publications.length > 0 && <Publications publications={publications} />
+      )}
       <ToastContainer />
     </AppWrapper>
   );
