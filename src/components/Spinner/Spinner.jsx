@@ -7,9 +7,9 @@ export const Spinner = () => {
       height="40"
       width="40"
       ariaLabel="blocks-loading"
-      wrapperStyle={{ left: '200px' }}
+      wrapperStyle={{}}
       wrapperClass="blocks-wrapper"
-      colors={['#0d6efd']}
+      colors={['#000000']}
     />
   );
 };

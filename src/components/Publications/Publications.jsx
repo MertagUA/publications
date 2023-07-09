@@ -15,21 +15,20 @@ export const Publications = ({ publications }) => {
     }
   }
 
+  if (publications.length >= 101 && visiblePublications.length % 10 === 0) {
+    setVisiblePublications(prevstate => [
+      publications[publications.length - 1],
+      ...prevstate,
+    ]);
+  }
+
   const onLoadMoreBtnClick = () => {
-    if (amountOfPublications > 100) {
+    if (amountOfPublications === 100) {
       setIsLoadMoreDisabled(true);
       return toast.info('Thats all publications');
     }
 
-    if (publications.length >= 101 && visiblePublications.length % 10 === 0) {
-      setVisiblePublications(prevstate => [...prevstate, publications[100]]);
-      setAmountOfPublications(prevstate => prevstate + 1);
-    }
-
     for (let i = amountOfPublications; i < amountOfPublications + 10; i += 1) {
-      if (i === 100) {
-        break;
-      }
       setVisiblePublications(prevstate => [...prevstate, publications[i]]);
     }
     setAmountOfPublications(prevstate => prevstate + 10);

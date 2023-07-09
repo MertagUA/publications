@@ -16,12 +16,14 @@ export const PublicationForm = () => {
   const onInputChange = e => {
     if (e.target.name === 'title') {
       setTitle(e.target.value);
+      if (e.target.value !== '' && body.trim() !== '') {
+        setDisabled(false);
+      }
     } else {
+      if (e.target.value !== '' && title.trim() !== '') {
+        setDisabled(false);
+      }
       setBody(e.target.value);
-    }
-
-    if (title.trim() !== '' && body.trim() !== '') {
-      setDisabled(false);
     }
 
     if (e.target.value.trim() === '') {
